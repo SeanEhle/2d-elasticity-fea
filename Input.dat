@@ -1,0 +1,60 @@
+Input.dat
+Input file for 2D_Elasticity_FEA m-file
+
+Stress or Strain  *use 0 for stress, 1 for strain
+1
+
+Node information
+node#  x  y
+  1    0  0
+  2    2  0
+  3    4  0
+  4    6  0
+  5    0  2
+  6    2  2
+  7    4  2
+  8    6  2
+  9    4  5
+ 10    6  5
+ 11    6  8
+
+Element information
+elem# node#i node#j node#k    t      E    nu  AlphaDeltaT SigYield EpsYield
+ 1       1      2      5      1    200e9 0.29   2.67e-4    505e6    186e6
+ 2       2      6      5      1    200e9 0.29   2.67e-4    505e6    186e6
+ 3       2      3      6      1    200e9 0.29   2.67e-4    505e6    186e6
+ 4       3      7      6      1    200e9 0.29   2.67e-4    505e6    186e6
+ 5       3      4      8      1    200e9 0.29         0    505e6    186e6
+ 6       3      8      7      1    200e9 0.29         0    505e6    186e6
+ 7       7      8     10      1     69e9 0.33         0    310e6    207e6
+ 8       7     10      9      1     69e9 0.33         0    310e6    207e6
+ 9       9     10     11      1     69e9 0.33         0    310e6    207e6
+
+Point load information  *use 1 for x-dir, 0 for y-dir / must use components
+load# node# dir  mag
+  1     3    0 -12e4
+  2     7    1  -3e5
+  3     7    0   5e4
+
+Surface loads (tractions)
+load# elem# node# node# dir mag
+  1     2     5     6    0 1000
+  2     4     6     7    0 1000
+  3     9     9    11    1 7000
+
+Volume loads / body forces (*for load on all elements, use 'inf' as elem#)
+load# elem# dir mag
+  1     5    1  2e5
+  2     6    1  2e5
+  3     7    1  2e5
+  4     8    1  2e5
+
+Dirichlet BC's   *use 1 for x-dir, 0 for y-dir / must use components
+  Nodal Displacement Boundary Condition information
+BC# node# dir disp
+ 1    1    1   0
+ 2    1    0   0
+ 3    5    1   0
+ 4    5    0   0
+ 5   11    1   0
+ 6   11    0   0
